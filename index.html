@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surf Philosophy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.8;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        h1:hover {
+            color: #4a90e2;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #666;
+            letter-spacing: 0.1rem;
+        }
+
+        nav {
+            text-align: center;
+            padding: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        nav a {
+            margin: 0 1.5rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #4a90e2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 0.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .article {
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .article:hover {
+            transform: translateX(10px);
+        }
+
+        .article:last-child {
+            border-bottom: none;
+        }
+
+        .article-date {
+            font-size: 0.75rem;
+            color: #999;
+            letter-spacing: 0.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-preview {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #2a2a2a;
+            font-style: italic;
+        }
+
+        .about-content {
+            text-align: center;
+            font-size: 1rem;
+            line-height: 2.2;
+            color: #4a4a4a;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 5rem;
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            color: #999;
+            letter-spacing: 0.1rem;
+        }
+
+        .wave-divider {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 2rem 0;
+            color: #d0d0d0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #4a90e2;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+
+        .full-article {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .full-article-title {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #2a2a2a;
+            font-style: italic;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .full-article-content {
+            font-size: 1rem;
+            line-height: 2.2;
+            color: #4a4a4a;
+            white-space: pre-line;
+        }
+
+        .full-article-content p {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 onclick="showHome()">Surf Philosophy</h1>
+        <p class="tagline">Reflections on waves and life</p>
+    </header>
+
+    <div id="mainNav">
+        <nav>
+            <a onclick="showHome()">Aphorisms</a>
+            <a onclick="showAbout()">About</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div id="homeView">
+            <section id="aphorisms" class="section">
+                <h2 class="section-title">Aphorisms</h2>
+                
+                <article class="article" onclick="showArticle(1)">
+                    <div class="article-date">OCTOBER 2025</div>
+                    <div class="article-preview">
+                        "The ocean doesn't care about your plans. Learn to dance with chaos, not against it."
+                    </div>
+                </article>
+
+                <article class="article" onclick="showArticle(2)">
+                    <div class="article-date">OCTOBER 2025</div>
+                    <div class="article-preview">
+                        "Every wipeout is a teacher. The question is whether you're willing to be a student."
+                    </div>
+                </article>
+
+                <article class="article" onclick="showArticle(3)">
+                    <div class="article-date">SEPTEMBER 2025</div>
+                    <div class="article-preview">
+                        "Patience in the lineup mirrors patience in life. The perfect wave comes to those who wait with awareness."
+                    </div>
+                </article>
+
+                <article class="article" onclick="showArticle(4)">
+                    <div class="article-date">SEPTEMBER 2025</div>
+                    <div class="article-preview">
+                        "You cannot force the ocean to give you what you want. You can only position yourself to receive what it offers."
+                    </div>
+                </article>
+
+                <article class="article" onclick="showArticle(5)">
+                    <div class="article-date">AUGUST 2025</div>
+                    <div class="article-preview">
+                        "The best surfers are the ones who never stopped being beginners in their hearts."
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <div id="aboutView" class="hidden">
+            <a class="back-button" onclick="showHome()">← Back</a>
+            <section class="section">
+                <h2 class="section-title">About</h2>
+                <div class="about-content">
+                    <p>This is a space for contemplation on the intersection of surfing and living.</p>
+                    <p>Where the rhythm of waves meets the rhythm of existence.</p>
+                    <p>Simple thoughts. Deep water.</p>
+                </div>
+            </section>
+        </div>
+
+        <div id="articleView" class="hidden">
+            <a class="back-button" onclick="showHome()">← Back to all aphorisms</a>
+            <div class="full-article">
+                <div class="article-date" id="articleDate"></div>
+                <div class="full-article-title" id="articleTitle"></div>
+                <div class="full-article-content" id="articleContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-text">© 2025 SURF PHILOSOPHY</p>
+    </footer>
+
+    <script>
+        const articles = {
+            1: {
+                date: "OCTOBER 2025",
+                title: "The ocean doesn't care about your plans. Learn to dance with chaos, not against it.",
+                content: `When I paddle out at dawn, I bring my expectations with me. I want clean waves, offshore winds, the perfect session. But the ocean has its own agenda.
+
+This morning the swell was inconsistent. The wind shifted. My board felt wrong. Everything I planned dissolved in saltwater.
+
+And then I stopped planning.
+
+I started responding instead of demanding. Reading the water instead of commanding it. Moving with the rhythm instead of imposing my own.
+
+That's when the magic happened. Not the session I wanted, but the session I needed.
+
+Life works the same way. We make our lists, our schedules, our five-year plans. We demand that reality conform to our vision. And reality laughs and sends us a cleanup set.
+
+The surfers who thrive aren't the ones with the best plans. They're the ones with the best responses. The ones who can pivot when conditions change. The ones who dance with what is, not what should be.
+
+Chaos isn't the enemy. Rigidity is.
+
+The ocean has been teaching this lesson for millions of years. We just need to be willing to learn it.`
+            },
+            2: {
+                date: "OCTOBER 2025",
+                title: "Every wipeout is a teacher. The question is whether you're willing to be a student.",
+                content: `Add your full writing here. Share your thoughts about learning from failures, about how wipeouts in surfing mirror setbacks in life, and what it means to remain open to the lessons they offer.
+
+This is where your complete essay or reflection will appear when someone clicks on this aphorism.`
+            },
+            3: {
+                date: "SEPTEMBER 2025",
+                title: "Patience in the lineup mirrors patience in life. The perfect wave comes to those who wait with awareness.",
+                content: `Add your full writing here about patience, awareness, and timing. Reflect on what it means to wait with intention rather than just waiting passively.
+
+This is your space to expand on this idea in full.`
+            },
+            4: {
+                date: "SEPTEMBER 2025",
+                title: "You cannot force the ocean to give you what you want. You can only position yourself to receive what it offers.",
+                content: `Add your full writing here about acceptance, positioning, and readiness. Explore the difference between forcing and receiving.
+
+Your complete thoughts go here.`
+            },
+            5: {
+                date: "AUGUST 2025",
+                title: "The best surfers are the ones who never stopped being beginners in their hearts.",
+                content: `Add your full writing here about beginner's mind, humility, and continuous learning.
+
+Share your full perspective on this idea.`
+            }
+        };
+
+        function showHome() {
+            document.getElementById('homeView').classList.remove('hidden');
+            document.getElementById('aboutView').classList.add('hidden');
+            document.getElementById('articleView').classList.add('hidden');
+            document.getElementById('mainNav').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showAbout() {
+            document.getElementById('homeView').classList.add('hidden');
+            document.getElementById('aboutView').classList.remove('hidden');
+            document.getElementById('articleView').classList.add('hidden');
+            document.getElementById('mainNav').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showArticle(id) {
+            const article = articles[id];
+            document.getElementById('articleDate').textContent = article.date;
+            document.getElementById('articleTitle').textContent = article.title;
+            document.getElementById('articleContent').textContent = article.content;
+            
+            document.getElementById('homeView').classList.add('hidden');
+            document.getElementById('aboutView').classList.add('hidden');
+            document.getElementById('articleView').classList.remove('hidden');
+            document.getElementById('mainNav').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
