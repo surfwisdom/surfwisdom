@@ -134,17 +134,6 @@
             letter-spacing: 0.1rem;
         }
 
-        .wave-divider {
-            text-align: center;
-            font-size: 1.5rem;
-            margin: 2rem 0;
-            color: #d0d0d0;
-        }
-
-        .hidden {
-            display: none;
-        }
-
         .back-button {
             display: inline-block;
             margin-bottom: 2rem;
@@ -185,6 +174,10 @@
         .full-article-content p {
             margin-bottom: 1.5rem;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -204,41 +197,7 @@
         <div id="homeView">
             <section id="aphorisms" class="section">
                 <h2 class="section-title">Aphorisms</h2>
-                
-                <article class="article" onclick="showArticle(1)">
-                    <div class="article-date">OCTOBER 2025</div>
-                    <div class="article-preview">
-                        "The ocean doesn't care about your plans. Learn to dance with chaos, not against it."
-                    </div>
-                </article>
-
-                <article class="article" onclick="showArticle(2)">
-                    <div class="article-date">OCTOBER 2025</div>
-                    <div class="article-preview">
-                        "Every wipeout is a teacher. The question is whether you're willing to be a student."
-                    </div>
-                </article>
-
-                <article class="article" onclick="showArticle(3)">
-                    <div class="article-date">SEPTEMBER 2025</div>
-                    <div class="article-preview">
-                        "Patience in the lineup mirrors patience in life. The perfect wave comes to those who wait with awareness."
-                    </div>
-                </article>
-
-                <article class="article" onclick="showArticle(4)">
-                    <div class="article-date">SEPTEMBER 2025</div>
-                    <div class="article-preview">
-                        "You cannot force the ocean to give you what you want. You can only position yourself to receive what it offers."
-                    </div>
-                </article>
-
-                <article class="article" onclick="showArticle(5)">
-                    <div class="article-date">AUGUST 2025</div>
-                    <div class="article-preview">
-                        "The best surfers are the ones who never stopped being beginners in their hearts."
-                    </div>
-                </article>
+                <div id="articlesContainer"></div>
             </section>
         </div>
 
@@ -269,57 +228,33 @@
     </footer>
 
     <script>
-        const articles = {
-            1: {
-                date: "OCTOBER 2025",
-                title: "The ocean doesn't care about your plans. Learn to dance with chaos, not against it.",
-                content: `When I paddle out at dawn, I bring my expectations with me. I want clean waves, offshore winds, the perfect session. But the ocean has its own agenda.
+        let articles = {};
 
-This morning the swell was inconsistent. The wind shifted. My board felt wrong. Everything I planned dissolved in saltwater.
+        // Fetch quotes from JSON
+        fetch('quotes.json')
+            .then(response => response.json())
+            .then(data => {
+                articles = data;
+                renderArticles(); // render list after loading
+            })
+            .catch(err => console.error('Error loading quotes:', err));
 
-And then I stopped planning.
+        function renderArticles() {
+            const container = document.getElementById('articlesContainer');
+            container.innerHTML = '';
+            Object.keys(articles).forEach(id => {
+                const article = articles[id];
+                const articleEl = document.createElement('article');
+                articleEl.className = 'article';
+                articleEl.onclick = () => showArticle(id);
 
-I started responding instead of demanding. Reading the water instead of commanding it. Moving with the rhythm instead of imposing my own.
-
-That's when the magic happened. Not the session I wanted, but the session I needed.
-
-Life works the same way. We make our lists, our schedules, our five-year plans. We demand that reality conform to our vision. And reality laughs and sends us a cleanup set.
-
-The surfers who thrive aren't the ones with the best plans. They're the ones with the best responses. The ones who can pivot when conditions change. The ones who dance with what is, not what should be.
-
-Chaos isn't the enemy. Rigidity is.
-
-The ocean has been teaching this lesson for millions of years. We just need to be willing to learn it.`
-            },
-            2: {
-                date: "OCTOBER 2025",
-                title: "Every wipeout is a teacher. The question is whether you're willing to be a student.",
-                content: `Add your full writing here. Share your thoughts about learning from failures, about how wipeouts in surfing mirror setbacks in life, and what it means to remain open to the lessons they offer.
-
-This is where your complete essay or reflection will appear when someone clicks on this aphorism.`
-            },
-            3: {
-                date: "SEPTEMBER 2025",
-                title: "Patience in the lineup mirrors patience in life. The perfect wave comes to those who wait with awareness.",
-                content: `Add your full writing here about patience, awareness, and timing. Reflect on what it means to wait with intention rather than just waiting passively.
-
-This is your space to expand on this idea in full.`
-            },
-            4: {
-                date: "SEPTEMBER 2025",
-                title: "You cannot force the ocean to give you what you want. You can only position yourself to receive what it offers.",
-                content: `Add your full writing here about acceptance, positioning, and readiness. Explore the difference between forcing and receiving.
-
-Your complete thoughts go here.`
-            },
-            5: {
-                date: "AUGUST 2025",
-                title: "The best surfers are the ones who never stopped being beginners in their hearts.",
-                content: `Add your full writing here about beginner's mind, humility, and continuous learning.
-
-Share your full perspective on this idea.`
-            }
-        };
+                articleEl.innerHTML = `
+                    <div class="article-date">${article.date}</div>
+                    <div class="article-preview">${article.title}</div>
+                `;
+                container.appendChild(articleEl);
+            });
+        }
 
         function showHome() {
             document.getElementById('homeView').classList.remove('hidden');
@@ -342,7 +277,7 @@ Share your full perspective on this idea.`
             document.getElementById('articleDate').textContent = article.date;
             document.getElementById('articleTitle').textContent = article.title;
             document.getElementById('articleContent').textContent = article.content;
-            
+
             document.getElementById('homeView').classList.add('hidden');
             document.getElementById('aboutView').classList.add('hidden');
             document.getElementById('articleView').classList.remove('hidden');
